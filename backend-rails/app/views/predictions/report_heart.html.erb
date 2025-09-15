@@ -1,0 +1,21 @@
+<div class="report-container">
+  <h1 class="report-title">📝 Heart Disease Prediction Report</h1>
+
+  <% if @prediction.present? %>
+    <% css_class = @prediction.downcase.include?("high") ? "danger" : "success" %>
+
+    <div class="report-card <%= css_class %>">
+      <p class="report-label">Prediction Result:</p>
+      <p class="report-result"><%= @prediction %></p>
+    </div>
+  <% else %>
+    <div class="report-card empty">
+      <p>No prediction available. Please submit the form first.</p>
+    </div>
+  <% end %>
+
+  <div class="report-actions">
+    <%= link_to "🏠 Home", root_path, class: "btn btn-home" %>
+    <%= link_to "🔄 Try Prediction Again", new_prediction_path, class: "btn btn-try" %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<h1>Heart Disease Prediction Report</h1>
+
+<% if @prediction.present? %>
+  <p><strong>Result:</strong> <%= @prediction %></p>
+<% else %>
+  <p>No prediction available.</p>
+<% end %>

@@ -1,0 +1,25 @@
+<div class="forgot-container">
+  <div class="forgot-card">
+    <h2>Forgot Your Password?</h2>
+    <p class="subtitle">Enter your email to receive password reset instructions</p>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="input-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send Reset Instructions", class: "forgot-btn" %>
+      </div>
+    <% end %>
+
+    <div class="links">
+      <%= link_to "Back to Login", new_session_path(resource_name), class: "link" %> |
+      <%= link_to "Sign Up", new_registration_path(resource_name), class: "link" %>
+    </div>
+  </div>
+</div>
+

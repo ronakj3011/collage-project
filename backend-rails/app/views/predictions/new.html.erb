@@ -1,0 +1,80 @@
+<main class="container predict">
+  <div class="prediction-container">
+  <h1 class="form-title">Please fill in all details.</h1>
+
+  <%= form_with url: predictions_path, method: :post, class: "prediction-form" do %>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <%= label_tag :age, "Age" %>
+        <%= number_field_tag :age, nil, class: "form-control", placeholder: "Enter your age", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :sex, "Sex" %>
+        <%= select_tag :sex, options_for_select([["Male", 1], ["Female", 0]]), class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :cp, "Chest Pain Type" %>
+        <%= number_field_tag :cp, nil, class: "form-control", placeholder: "0–3", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :trestbps, "Resting BP (mm Hg)" %>
+        <%= number_field_tag :trestbps, nil, class: "form-control", placeholder: "e.g., 120", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :chol, "Cholesterol (mg/dl)" %>
+        <%= number_field_tag :chol, nil, class: "form-control", placeholder: "e.g., 200", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :fbs, "Fasting Blood Sugar" %>
+        <%= number_field_tag :fbs, nil, class: "form-control", placeholder: "1 = >120 mg/dl, 0 = Normal", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :restecg, "Resting ECG" %>
+        <%= number_field_tag :restecg, nil, class: "form-control", placeholder: "0–2", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :thalach, "Max Heart Rate" %>
+        <%= number_field_tag :thalach, nil, class: "form-control", placeholder: "e.g., 150", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :exang, "Exercise Angina" %>
+        <%= number_field_tag :exang, nil, class: "form-control", placeholder: "1 = Yes, 0 = No", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :oldpeak, "ST Depression" %>
+        <%= number_field_tag :oldpeak, nil, class: "form-control", placeholder: "e.g., 1.5", required: true, step: "0.1" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :slope, "Slope of ST Segment" %>
+        <%= number_field_tag :slope, nil, class: "form-control", placeholder: "0–2", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :ca, "Major Vessels Count" %>
+        <%= number_field_tag :ca, nil, class: "form-control", placeholder: "0–3", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :thal, "Thalassemia" %>
+        <%= number_field_tag :thal, nil, class: "form-control", placeholder: "1 = Normal, 2 = Fixed, 3 = Reversible", required: true %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag "🔍 Predict Risk", class: "btn-submit" %>
+    </div>
+
+  <% end %>
+  </div>
+</main>

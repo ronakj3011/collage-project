@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "HeartCare AI" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+    <body>
+    <!-- Header / Navbar -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <%= link_to "🫀 HeartCare AI", root_path, class: "logo" %>
+        </div>
+
+        <nav class="nav-links">
+          
+
+          <% if user_signed_in? %>
+            <%= link_to "🏠 About US", root_path, class: "nav-item" %>
+          <%= link_to "📊 Predict Risk", new_prediction_path, class: "nav-item" %>
+            <%= link_to "👤 Profile", edit_user_registration_path, class: "nav-item" %>
+            <%#= link_to "Logout", destroy_user_session_path	, method: :delete, data: { turbo: false } %>
+            <%#= link_to "🔑 Login", new_user_session_path, class: "nav-item" %>
+            <%#= link_to "📝 Sign Up", new_user_registration_path, class: "nav-item" %>
+          <% end %>
+        </nav>
+
+      </div>
+    </header>
+
+
+
+    
+
+    <!-- Main Content -->
+    <main class="container">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <p>© <%= Date.today.year %> HeartCare AI | Built by Group 10 using Rails & Flask ML API</p>
+      </div>
+    </footer>
+  </body>
+</html>
