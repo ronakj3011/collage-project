@@ -14,7 +14,7 @@ class CreateUserData < ActiveRecord::Migration[8.0]
       t.integer :slope
       t.integer :ca
       t.integer :thal
-      t.integer :user_id
+      t.integer :user_id 
 
       t.timestamps
     end
