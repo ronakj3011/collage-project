@@ -31,7 +31,7 @@ class PredictionsController < ApplicationController
       thal: params[:thal].to_i
     }
     current_user.user_data.create(user_data)
-    uri = URI("http://127.0.0.1:5000/predict")
+    uri = URI("http://python-service:5000/predict")
     response = Net::HTTP.post(uri, user_data.to_json, "Content-Type" => "application/json")
     result = JSON.parse(response.body)
 

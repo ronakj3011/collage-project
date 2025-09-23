@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  rails-app:
+    build: ./backend-rails
+    command: >
+      bash -c "
+        bundle exec rails db:create db:migrate 2>/dev/null || true &&
+        bundle exec rails server -b 0.0.0.0 -p 3000
+      "
+    ports:
+      - "3000:3000"
+    depends_on:
+      - python-service
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
+      RAILS_ENV: development
+
+  python-service:
+    build: ./ml-api
+    ports:
+      - "5000:5000"
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
