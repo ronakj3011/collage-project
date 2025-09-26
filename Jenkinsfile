@@ -42,7 +42,7 @@ pipeline {
             echo "🎉 Build, test, and deployment successful!"
         }
         failure {
-            echo "❌ Build or tests failed. Check logs above."
+            echo "❌ Build or tests failed. Check logs a bove."
         }
     }
 }
