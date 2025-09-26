@@ -12,7 +12,7 @@ services:
       - python-service
       - db
     environment:
-      DATABASE_URL: postgres://railsuser:railspass@db:5432/railsdb
+      # DATABASE_URL: postgres://railsuser:railspass@db:5432/railsdb
 
       RAILS_ENV: development
     
