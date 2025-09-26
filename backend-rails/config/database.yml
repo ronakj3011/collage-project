@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: railsdb
+  database: rails_production

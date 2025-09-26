@@ -12,10 +12,12 @@ services:
       - python-service
       - db
     environment:
-      # DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
       DATABASE_URL: postgres://railsuser:railspass@db:5432/railsdb
 
       RAILS_ENV: development
+    
+    # volumes:
+    #  - /home/ronak-jain/collage_project/backend-rails:/app
 
   python-service:
     build: ./ml-api
@@ -32,7 +34,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
 volumes:
   db-data:
