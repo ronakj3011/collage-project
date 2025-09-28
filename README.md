@@ -24,7 +24,7 @@ cd collage-project
 ````
 2. **Start services with Docker Compose**
 ```bash
-docker compose up --build
+docker compose up
 ````
 - **Rails app** → http://localhost:3000
 - **Python ML API** → http://localhost:5000
