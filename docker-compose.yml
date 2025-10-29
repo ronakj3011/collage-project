@@ -1,6 +1,9 @@
+
 services:
   rails-app:
-    image: ronak834/rails_app:latest
+    build:
+      context: ./backend-rails      # 👈 path to your Dockerfile & Rails app code
+      dockerfile: Dockerfile    # 👈 your Dockerfile name (adjust if different)
     command: >
       bash -c "
         bundle exec rails db:create db:migrate 2>/dev/null || true &&
@@ -12,9 +15,15 @@ services:
       - python-service
       - db
     environment:
-      
       RAILS_ENV: development
-  
+      DATABASE_HOST: db
+      DATABASE_USER: railsuser
+      DATABASE_PASSWORD: railspass
+      DATABASE_NAME: railsdb
+      DATABASE_PORT: 5432
+    volumes:
+      - ./backend-rails:/app          # 👈 Mount your host Rails code into container
+      - bundle_cache:/usr/local/bundle  # optional: speeds up gem installs
 
   python-service:
     image: ronak834/ml_service:latest
@@ -23,7 +32,6 @@ services:
 
   db:
     image: postgres:15
-    # restart: always
     environment:
       POSTGRES_USER: railsuser
       POSTGRES_PASSWORD: railspass
@@ -31,7 +39,8 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5432:5432"
 
 volumes:
   db-data:
+  bundle_cache:

@@ -1,0 +1,52 @@
+<div class="dashboard-wrapper">
+  <h1 class="dash-title">
+    Welcome, <%= current_user.email %> 👋
+  </h1>
+
+  <div class="dash-filter">
+    <%= form_with url: dashboard_path, method: :get, local: true, class: "dash-filter-form" do %>
+      <label>From</label>
+      <%= date_field_tag :start_date, params[:start_date], class: "dash-input" %>
+      <label>To</label>
+      <%= date_field_tag :end_date, params[:end_date], class: "dash-input" %>
+      <%= submit_tag "Apply", class: "dash-btn" %>
+    <% end %>
+  </div>
+
+  <div class="dash-grid">
+    <div class="dash-card">
+      <h3>🩸 Resting BP</h3>
+      <%= line_chart @user_data.group_by_day(:created_at).average(:trestbps), xtitle: "Date", ytitle: "mmHg" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>💓 Heart Rate</h3>
+      <%= line_chart @user_data.group_by_day(:created_at).average(:thalach), xtitle: "Date", ytitle: "BPM" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>🥼 Cholesterol</h3>
+      <%= line_chart @user_data.group_by_day(:created_at).average(:chol), xtitle: "Date", ytitle: "mg/dl" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>📈 ST Depression</h3>
+      <%= line_chart @user_data.group_by_day(:created_at).average(:oldpeak), xtitle: "Date", ytitle: "ST Depression" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>💢 Chest Pain Type</h3>
+      <%= column_chart @user_data.group(:cp).count, xtitle: "CP Type", ytitle: "Count" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>🏃 Exercise Angina</h3>
+      <%= pie_chart @user_data.group(:exang).count, donut: true, legend: "bottom" %>
+    </div>
+
+    <div class="dash-card">
+      <h3>🧬 Thalassemia Type</h3>
+      <%= pie_chart @user_data.group(:thal).count, donut: true, legend: "bottom" %>
+    </div>
+  </div>
+</div>
