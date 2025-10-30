@@ -48,27 +48,32 @@ docker compose run --rm rails-app bin/rails db:migrate
 
 ## User Interface 
 1. **Login Page.**
-<img width="1366" height="768" alt="Screenshot from 2025-09-24 15-14-38" src="https://github.com/user-attachments/assets/237e8c05-3db3-432e-b6f8-790a6b6b787f" />
 
+    <img width="1529" height="708" alt="localhost_3000_users_sign_in" src="https://github.com/user-attachments/assets/e92f24d4-a028-47cc-8cf5-b09b36d5caed" />
 
-2. **About us Page.**
-<img width="1366" height="768" alt="Screenshot from 2025-09-24 15-15-11" src="https://github.com/user-attachments/assets/4c8c77aa-906e-441d-abb6-2d90c3840b83" />
+2. **Dashboard Page.**
 
+    <img width="1529" height="2042" alt="localhost_3000_" src="https://github.com/user-attachments/assets/57e5f0b1-68bc-483e-b536-932da74c5162" />
 
-3. **Form Page for User Data.**
-<img width="1366" height="768" alt="Screenshot from 2025-09-24 15-15-23" src="https://github.com/user-attachments/assets/204f8921-1862-497c-a309-4337a6337a9b" />
+3. **About Us Page.**
 
+    <img width="1529" height="972" alt="localhost_3000_predictions_about_us" src="https://github.com/user-attachments/assets/4f84da42-3106-4503-ac18-00ae98d570b6" />
 
+4. **Form Page for User Data.**
 
-4. **Predition.**
-<img width="1366" height="768" alt="prediction" src="https://github.com/user-attachments/assets/acff1d01-dad5-44da-94cd-434a0f234009" />
+    <img width="1529" height="1565" alt="localhost_3000_predictions_about_us (1)" src="https://github.com/user-attachments/assets/50a539a3-aa7b-46ad-9656-0688cd5eeb4a" />
+5. **Preditions.**
+ 
+  - **Low Risk:**
+    <img width="1529" height="540" alt="localhost_3000_predictions_about_us (3)" src="https://github.com/user-attachments/assets/71e501db-7dab-4985-8c58-baadab6ba368" />
 
+  - **High Risk:**
+    <img width="1529" height="607" alt="localhost_3000_predictions_report_heart" src="https://github.com/user-attachments/assets/ea12a33f-fc42-4d69-ad7f-a4c1e0e13dbc" />
 
+6. **Profile Page.**
 
-5. **Profile Page.**
-<img width="1366" height="768" alt="profile" src="https://github.com/user-attachments/assets/d0edbab2-b1fd-4612-a2d9-c95c3cfd4ccc" />
+    <img width="1529" height="1147" alt="localhost_3000_predictions_about_us (2)" src="https://github.com/user-attachments/assets/8f57f1ba-a818-43f0-b60b-b47a60cc6fcd" />
 
+7. **Sign up Page.**
 
-
-6. **Sign up Page.**
-<img width="1366" height="768" alt="sign_up" src="https://github.com/user-attachments/assets/fa2a00e5-4863-4add-b5f1-f4b6a34a70ac" />
+    <img width="1529" height="779" alt="localhost_3000_users_sign_in (1)" src="https://github.com/user-attachments/assets/0f07c2f8-84cf-4852-acbc-03ca32e58256" />
