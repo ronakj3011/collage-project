@@ -1,9 +1,7 @@
 
 services:
   rails-app:
-    build:
-      context: ./backend-rails      # 👈 path to your Dockerfile & Rails app code
-      dockerfile: Dockerfile    # 👈 your Dockerfile name (adjust if different)
+    image: ronak834/ml_service:v2.0.1
     command: >
       bash -c "
         bundle exec rails db:create db:migrate 2>/dev/null || true &&
