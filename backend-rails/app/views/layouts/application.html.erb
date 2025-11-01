@@ -11,16 +11,13 @@
 
   <%= yield :head %>
 
-  <!-- ✅ Main favicon -->
+  <!--  Main favicon -->
   <%= favicon_link_tag 'favicon1.png' %>
 
-  <!-- ✅ Optional alternate formats -->
   <link rel="apple-touch-icon" href="<%= asset_path('favicon1.png') %>">
 
-  <!-- ✅ (Optional) Enable PWA manifest -->
   <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-  <!-- ✅ Styles and JS -->
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
   </head>

@@ -1,7 +1,7 @@
 
 services:
   rails-app:
-    image: ronak834/rails_app:v2.0.1
+    image: ronak834/rails_app:v2.0.3
     command: >
       bash -c "
         bundle exec rails db:create db:migrate 2>/dev/null || true &&
