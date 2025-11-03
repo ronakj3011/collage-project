@@ -33,4 +33,4 @@ UserDatum.delete_all
   )
 end
 
-puts "✅ Created 1000 user_data records successfully!"
+puts "✅ Created 500 user_data records successfully!"
