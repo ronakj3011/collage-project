@@ -1,19 +1,32 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch("DATABASE_USER", "railsuser") %>
   password: <%= ENV.fetch("DATABASE_PASSWORD", "railspass") %>
   host: <%= ENV.fetch("DATABASE_HOST", "db") %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>_dev
 
 test:
   <<: *default
-  database: railsdb_test
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>_test
 
 production:
   <<: *default
-  database: rails_production
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>
+
+cable:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>_cable
+
+queue:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>_queue
+
+cache:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "railsdb") %>_cache
