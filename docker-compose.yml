@@ -3,10 +3,9 @@ services:
   rails-app:
     image: ronak834/rails_app:v2.0.3
     command: >
-      bash -c "
-        bundle exec rails db:create db:migrate 2>/dev/null || true &&
-        bundle exec rails server -b 0.0.0.0 -p 3000
-      "
+      bash -c "rm -f tmp/pids/server.pid &&
+      bundle exec rails db:create db:migrate 2>/dev/null || true &&
+      bundle exec rails server -b 0.0.0.0 -p 3000"
     ports:
       - "80:3000"
     depends_on:
@@ -20,8 +19,8 @@ services:
       DATABASE_NAME: railsdb
       DATABASE_PORT: 5432
     volumes:
-      - ./backend-rails:/app          # 👈 Mount your host Rails code into container
-      - bundle_cache:/usr/local/bundle  # optional: speeds up gem installs
+      - ./backend-rails:/app
+      - bundle_cache:/usr/local/bundle
 
   python-service:
     image: ronak834/ml_service:latest
