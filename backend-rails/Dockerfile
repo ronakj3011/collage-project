@@ -5,10 +5,15 @@ FROM ruby:3.2
 WORKDIR /app
 
 # Install essential system dependencies
-RUN apt-get update -qq && apt-get install -y  postgresql-client
+RUN apt-get update -qq && apt-get install -y build-essential postgresql-client
 
 # Copy Gemfile and install gems
 COPY Gemfile Gemfile.lock ./
+
+ENV BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_JOBS=4 \
+    BUNDLE_RETRY=3
+
 RUN bundle install
 
 # Copy the rest of the app
@@ -28,4 +33,5 @@ RUN bundle exec rake assets:precompile
 EXPOSE 3000
 
 # Start the Rails server
-CMD ["bash", "-c", "bundle exec rails server -b 0.0.0.0 -p 3000"]
+# CMD ["bash", "-c", "bundle exec rails server -b 0.0.0.0 -p 3000"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
