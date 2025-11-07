@@ -1,6 +1,6 @@
 services:
   rails-app:
-    image: ronak834/rails_app:pdv1.0.0
+    image: ronak834/rails_app:pdv1.0.1
     command: >
       bash -c "rm -f tmp/pids/server.pid &&
       bundle exec rails db:create db:migrate &&
@@ -16,7 +16,7 @@ services:
       DATABASE_NAME: railsdb
       DATABASE_PORT: 5432
     volumes:
-      - bundle_cache:/usr/local/bundle
+      - rails-public:/app/public
 
   nginx:
    image: nginx:latest
@@ -25,7 +25,7 @@ services:
    ports:
     - "80:80"
    volumes:
-    - ./backend-rails/public:/app/public:ro
+    - rails-public:/app/public:ro
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
 
 
@@ -48,4 +48,4 @@ services:
 
 volumes:
   db-data:
-  bundle_cache:
+  rails-public:
